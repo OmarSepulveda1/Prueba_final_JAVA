@@ -1,4 +1,4 @@
-package cl.Omar.Clinica.modelos;
+package cl.Omar.Clinica.model;
 
 import java.time.LocalDateTime;
 

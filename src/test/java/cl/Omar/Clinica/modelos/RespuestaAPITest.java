@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 
 import org.springframework.http.HttpStatus;
 
+import cl.Omar.Clinica.model.RespuestaAPI;
+
 class RespuestaAPITest {
 
     private HttpStatus httpStatus;

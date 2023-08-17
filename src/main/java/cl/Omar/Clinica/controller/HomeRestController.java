@@ -1,9 +1,7 @@
-package cl.Omar.Clinica.controladores;
+package cl.Omar.Clinica.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -13,7 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import cl.Omar.Clinica.modelos.RespuestaAPI;
+import cl.Omar.Clinica.model.RespuestaAPI;
 
 @RestController
 @RequestMapping(path = "/api", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -23,7 +21,6 @@ public class HomeRestController {
     // -----------------------------------------------------------------------------------------
 
     /** Objeto {@link Logger} que contiene los métodos de depuración */
-    private static final Logger logger = LogManager.getLogger(HomeRestController.class);
 
     // Solicitudes GET
     // -----------------------------------------------------------------------------------------
@@ -38,7 +35,6 @@ public class HomeRestController {
     @GetMapping
     public ResponseEntity<RespuestaAPI> mostrarMensaje(HttpServletRequest request) {
         // Depuración
-        logger.info("[API] Solicitud GET: {}", request.getRequestURI());
 
         // Crear respuesta
         RespuestaAPI respuesta = new RespuestaAPI(HttpStatus.OK, "mostrarMensaje", "Prueba Final");
@@ -58,7 +54,6 @@ public class HomeRestController {
     @GetMapping(path = "/{nombre}")
     public ResponseEntity<RespuestaAPI> mostrarMensajePersonalizado(@PathVariable String nombre, HttpServletRequest request) {
         // Depuración
-        logger.info("[API] Solicitud GET: {}", request.getRequestURI());
 
         // Crear respuesta
         RespuestaAPI respuesta = new RespuestaAPI(HttpStatus.OK, "mostrarMensajePersonalizado",
