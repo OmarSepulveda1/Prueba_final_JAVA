@@ -1,0 +1,3 @@
+Para logear en la tabla:
+:adminp
+password:12345

@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -17,10 +19,12 @@ public class HistoriaClinica {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="ID")
 	private int ID;
-	@Column(name="Paciente_ID")
-	private int Paciente_ID;
-	@Column(name="Doctor_ID")
-	private int Doctor_ID;
+	@ManyToOne
+    @JoinColumn(name = "Paciente_ID")
+    private Paciente paciente;
+	@ManyToOne
+    @JoinColumn(name = "Doctor_ID")
+    private Doctor doctor;
 	@Column(name="Fecha_Cita")
 	private LocalDate Fecha_Cita;
 	@Column(name="Sintomas")
@@ -32,18 +36,21 @@ public class HistoriaClinica {
 	
 	public HistoriaClinica() {}
 	
-	public HistoriaClinica(int ID, int paciente_ID, int doctor_ID, LocalDate fecha_Cita, String sintomas,
+
+	public HistoriaClinica(int iD, Paciente paciente, Doctor doctor, LocalDate fecha_Cita, String sintomas,
 			String diagnostico, String tratamiento) {
 		super();
-		
-		this.ID = ID;
-		Paciente_ID = paciente_ID;
-		Doctor_ID = doctor_ID;
+		ID = iD;
+		this.paciente = paciente;
+		this.doctor = doctor;
 		Fecha_Cita = fecha_Cita;
 		Sintomas = sintomas;
 		Diagnostico = diagnostico;
 		Tratamiento = tratamiento;
 	}
+
+
+
 
 	/**
 	 * @return the iD
@@ -52,6 +59,7 @@ public class HistoriaClinica {
 		return ID;
 	}
 
+
 	/**
 	 * @param iD the iD to set
 	 */
@@ -59,33 +67,38 @@ public class HistoriaClinica {
 		ID = iD;
 	}
 
-	/**
-	 * @return the paciente_ID
-	 */
-	public int getPaciente_ID() {
-		return Paciente_ID;
-	}
 
 	/**
-	 * @param paciente_ID the paciente_ID to set
+	 * @return the paciente
 	 */
-	public void setPaciente_ID(int paciente_ID) {
-		Paciente_ID = paciente_ID;
+	public Paciente getPaciente() {
+		return paciente;
 	}
 
-	/**
-	 * @return the doctor_ID
-	 */
-	public int getDoctor_ID() {
-		return Doctor_ID;
-	}
 
 	/**
-	 * @param doctor_ID the doctor_ID to set
+	 * @param paciente the paciente to set
 	 */
-	public void setDoctor_ID(int doctor_ID) {
-		Doctor_ID = doctor_ID;
+	public void setPaciente(Paciente paciente) {
+		this.paciente = paciente;
 	}
+
+
+	/**
+	 * @return the doctor
+	 */
+	public Doctor getDoctor() {
+		return doctor;
+	}
+
+
+	/**
+	 * @param doctor the doctor to set
+	 */
+	public void setDoctor(Doctor doctor) {
+		this.doctor = doctor;
+	}
+
 
 	/**
 	 * @return the fecha_Cita
@@ -94,12 +107,14 @@ public class HistoriaClinica {
 		return Fecha_Cita;
 	}
 
+
 	/**
 	 * @param fecha_Cita the fecha_Cita to set
 	 */
 	public void setFecha_Cita(LocalDate fecha_Cita) {
 		Fecha_Cita = fecha_Cita;
 	}
+
 
 	/**
 	 * @return the sintomas
@@ -108,12 +123,14 @@ public class HistoriaClinica {
 		return Sintomas;
 	}
 
+
 	/**
 	 * @param sintomas the sintomas to set
 	 */
 	public void setSintomas(String sintomas) {
 		Sintomas = sintomas;
 	}
+
 
 	/**
 	 * @return the diagnostico
@@ -122,12 +139,14 @@ public class HistoriaClinica {
 		return Diagnostico;
 	}
 
+
 	/**
 	 * @param diagnostico the diagnostico to set
 	 */
 	public void setDiagnostico(String diagnostico) {
 		Diagnostico = diagnostico;
 	}
+
 
 	/**
 	 * @return the tratamiento
@@ -136,12 +155,14 @@ public class HistoriaClinica {
 		return Tratamiento;
 	}
 
+
 	/**
 	 * @param tratamiento the tratamiento to set
 	 */
 	public void setTratamiento(String tratamiento) {
 		Tratamiento = tratamiento;
 	}
+
 
 	@Override
 	public String toString() {

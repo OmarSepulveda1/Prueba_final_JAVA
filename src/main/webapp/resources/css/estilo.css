@@ -1,14 +1,42 @@
-*, *::before, *::after {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
+/* Colores personalizados */
+:root {
+    --color-verde: #00a859;
+    --color-celeste: #007bff;
+    --color-fondo: #ffffff;
 }
 
-body {
-    padding: 1rem;
+/* Estilo para botones con fondo celeste y texto blanco */
+.btn-celeste {
+    background-color: var(--color-celeste);
+    color: white;
 }
 
+/* Estilo para el encabezado h1 con color verde */
 h1 {
-    color: blue;
-    margin-bottom: 0.25rem;
+    color: var(--color-verde);
+}
+
+/* Estilo para la tabla con fondo blanco y borde */
+.table {
+    background-color: var(--color-fondo);
+    border: 1px solid var(--color-verde);
+}
+
+/* Estilo para celdas de encabezado de tabla con fondo celeste y texto blanco */
+.table thead th {
+    background-color: var(--color-celeste);
+    color: white;
+}
+
+/* Estilo para los botones de acción en la tabla */
+.table .btn {
+    background-color: var(--color-celeste);
+    color: white;
+    border: none;
+}
+
+/* Estilo para los botones de acción en la tabla cuando se les aplica hover */
+.table .btn:hover {
+    background-color: var(--color-verde);
+    color: white;
 }

@@ -1,6 +1,7 @@
 package cl.Omar.Clinica.entity;
 
 import java.time.LocalDate;
+import java.time.Period;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -73,6 +74,10 @@ public class Paciente {
 	}
 	
 	
-	
+	public int edad() {
+		LocalDate hoy = LocalDate.now();
+	    Period periodo = Period.between(Fecha_Nacimiento, hoy);
+	    return periodo.getYears();
+	}
 
 }

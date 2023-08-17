@@ -1,22 +1,37 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Historia Clínica</title>
+    <!-- Encabezado y estilos aquí -->
 </head>
 <body>
-    <h1>Historia Clínica de ${paciente.nombre}</h1>
-    <ul>
-        <c:forEach items="${paciente.historiaClinica}" var="visita">
-            <h2>${visita.fecha}</h2>
-            <p>Doctor: ${visita.doctor}</p>
-            <p>Síntomas: ${visita.sintomas}</p>
-            <p>Diagnóstico: ${visita.diagnostico}</p>
-            <p>Tratamiento: ${visita.tratamiento}</p>
-            <a href="<c:url value='/editarVisita'>"><c:param name="id" value="${visita.id}"/></c:url>">Editar</a>
-        </c:forEach>
-    </ul>
+    <div class="container mt-4">
+        <h1>Historia Clínica de ${paciente.Nombre}</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Médico</th>
+                    <th>Síntomas</th>
+                    <th>Diagnóstico</th>
+                    <th>Tratamiento</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <c:forEach var="cita" items="${paciente.historiaClinica}">
+                    <tr>
+                        <td>${cita.Fecha_Cita}</td>
+                        <td>${cita.doctor.Nombre}</td>
+                        <td>${cita.Sintomas}</td>
+                        <td>${cita.Diagnostico}</td>
+                        <td>${cita.Tratamiento}</td>
+                        <td><button class="btn btn-primary">Editar</button></td>
+                    </tr>
+                </c:forEach>
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>

@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -17,26 +19,32 @@ public class Cita {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column (name="ID")
 	private int ID;
-	@Column(name="Paciente_ID")
-	private int Paciente_ID;
-	@Column(name="Doctor_ID")
-	private int Doctor_ID;
+	@ManyToOne
+    @JoinColumn(name = "Paciente_ID")
+    private Paciente paciente;
+	@ManyToOne
+    @JoinColumn(name = "Doctor_ID")
+    private Doctor doctor;
 	@Column(name="Fecha")
 	private LocalDate Fecha;
-	@Column(name="Factura_ID")
-	private int Factura_ID;
+	@ManyToOne
+    @JoinColumn(name = "Factura_ID")
+    private Factura factura;
 	
 	public Cita() {}
 	
-	public Cita(int ID, int paciente_ID, int doctor_ID, LocalDate fecha, int factura_ID) {
+
+
+	public Cita(int iD, Paciente paciente, Doctor doctor, LocalDate fecha, Factura factura) {
 		super();
-		
-		this.ID = ID;
-		Paciente_ID = paciente_ID;
-		Doctor_ID = doctor_ID;
+		ID = iD;
+		this.paciente = paciente;
+		this.doctor = doctor;
 		Fecha = fecha;
-		Factura_ID = factura_ID;
+		this.factura = factura;
 	}
+
+
 
 	/**
 	 * @return the iD
@@ -45,6 +53,8 @@ public class Cita {
 		return ID;
 	}
 
+
+
 	/**
 	 * @param iD the iD to set
 	 */
@@ -52,33 +62,43 @@ public class Cita {
 		ID = iD;
 	}
 
-	/**
-	 * @return the paciente_ID
-	 */
-	public int getPaciente_ID() {
-		return Paciente_ID;
-	}
+
 
 	/**
-	 * @param paciente_ID the paciente_ID to set
+	 * @return the paciente
 	 */
-	public void setPaciente_ID(int paciente_ID) {
-		Paciente_ID = paciente_ID;
+	public Paciente getPaciente() {
+		return paciente;
 	}
 
-	/**
-	 * @return the doctor_ID
-	 */
-	public int getDoctor_ID() {
-		return Doctor_ID;
-	}
+
 
 	/**
-	 * @param doctor_ID the doctor_ID to set
+	 * @param paciente the paciente to set
 	 */
-	public void setDoctor_ID(int doctor_ID) {
-		Doctor_ID = doctor_ID;
+	public void setPaciente(Paciente paciente) {
+		this.paciente = paciente;
 	}
+
+
+
+	/**
+	 * @return the doctor
+	 */
+	public Doctor getDoctor() {
+		return doctor;
+	}
+
+
+
+	/**
+	 * @param doctor the doctor to set
+	 */
+	public void setDoctor(Doctor doctor) {
+		this.doctor = doctor;
+	}
+
+
 
 	/**
 	 * @return the fecha
@@ -87,6 +107,8 @@ public class Cita {
 		return Fecha;
 	}
 
+
+
 	/**
 	 * @param fecha the fecha to set
 	 */
@@ -94,19 +116,25 @@ public class Cita {
 		Fecha = fecha;
 	}
 
-	/**
-	 * @return the factura_ID
-	 */
-	public int getFactura_ID() {
-		return Factura_ID;
-	}
+
 
 	/**
-	 * @param factura_ID the factura_ID to set
+	 * @return the factura
 	 */
-	public void setFactura_ID(int factura_ID) {
-		Factura_ID = factura_ID;
+	public Factura getFactura() {
+		return factura;
 	}
+
+
+
+	/**
+	 * @param factura the factura to set
+	 */
+	public void setFactura(Factura factura) {
+		this.factura = factura;
+	}
+
+
 
 	@Override
 	public String toString() {

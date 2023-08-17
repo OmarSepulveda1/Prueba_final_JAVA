@@ -1,16 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>The Cl√≠nica</title>
-    <!-- CSS Proyecto -->
-<%@include file="css-proyect.jsp"%>
+    <title>Gestion Clinica</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">The Cl√≠nica</a>
+    <a class="navbar-brand" href="#">The ClÌnica</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -22,7 +22,7 @@
                 <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Pacientes</a>
+                <a class="nav-link" href="#"<c:url value="/pacientes"/>">Pacientes</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Doctores</a>
@@ -34,14 +34,9 @@
     </div>
 </nav>
 
-<div class="container mt-4">
-    <h1>Bienvenido a The Cl√≠nica</h1>
-    <p>¬°Aqu√≠ puedes gestionar tus pacientes, doctores y citas!</p>
+<div class="container">
+    <!-- AquÌ coloca el contenido de tus p·ginas -->
 </div>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
 </html>
